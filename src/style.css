@@ -1,0 +1,463 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.outer-container {
+    display: flex;
+}
+
+.header {
+    height: 45px;
+    line-height: 45px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9999;
+    display: block;
+    margin: 0;
+    width: 100%;
+    min-width: 1024px;
+    /* height: 48px; */
+    max-height: 44px;
+    background: rgba(221, 221, 221, 0.92);
+    font-size: 17px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-left: 60px;
+}
+
+.follow {
+    float: right;
+    margin-right: 79px;
+}
+
+.follow img {
+    width: 25px;
+    position: relative;
+    top: 7px;
+}
+
+body {
+    font-family: "Sen", sans-serif;
+    background: #f9f9fa;
+}
+
+.container {
+    width: 100%;
+    margin-left: 90px;
+    margin-bottom: 20px;
+}
+
+.follow a {
+    color: #131313;
+    text-decoration: none;
+}
+
+.org-tree {
+    display: flex;
+    justify-content: center;
+}
+
+.org-tree ul {
+    padding-top: 20px;
+    position: relative;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.org-tree li {
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.org-tree li::before,
+.org-tree li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid #ccc;
+    width: 50%;
+    height: 20px;
+}
+
+.org-tree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #ccc;
+}
+
+.org-tree li:only-child::after,
+.org-tree li:only-child::before {
+    display: none;
+}
+
+.org-tree li:only-child {
+    padding-top: 0;
+}
+
+.org-tree li:first-child::before,
+.org-tree li:last-child::after {
+    border: 0 none;
+}
+
+.org-tree li:last-child::before {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+
+.org-tree li:first-child::after {
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+
+.org-tree ul ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0;
+    height: 20px;
+}
+
+.org-tree li a {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #666;
+    font-family: arial, verdana, tahoma;
+    font-size: 11px;
+    display: inline-block;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.org-tree li a:hover,
+.org-tree li a:hover+ul li a {
+    background: #c8e4f8;
+    color: #000;
+    border: 1px solid #94a0b4;
+}
+
+.org-tree li a:hover+ul li::after,
+.org-tree li a:hover+ul li::before,
+.org-tree li a:hover+ul::before,
+.org-tree li a:hover+ul ul::before {
+    border-color: #94a0b4;
+}
+
+.card {
+    position: relative;
+    padding-top: 30px;
+    /* width: 300px; */
+}
+
+.card .image {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -10px;
+    z-index: 100;
+}
+
+.card .image img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: 13px solid #96f6b7;
+}
+
+.card .card-body {
+    background: #fff;
+    height: 56px;
+    text-align: center;
+    width: 300px;
+    padding-top: 60px;
+    border-radius: 16px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    z-index: -1;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card .card-body h2 {
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.card .card-body p {
+    line-height: 20px;
+    font-size: small;
+}
+
+.card .card-footer {
+    padding: 3px;
+    background: #96f6b7;
+    text-align: center;
+    bottom: 0;
+    position: relative;
+    width: 172px;
+    border-radius: 16px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    z-index: -1;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 122px;
+}
+
+.card .card-footer img {
+    width: 13px;
+    height: 10px;
+    margin: 5px;
+}
+
+.card .card-footer .item-content {
+    margin: 45px 10px;
+}
+
+.card .card-footer .info-dot {
+    float: right;
+}
+
+.country-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 0;
+}
+
+.country {
+    background: #FFFFFF;
+    border: 1px solid #FE464B;
+    border-radius: 100px;
+    width: 90px;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.country-image {
+    width: 22.22px;
+    padding: 6px;
+}
+
+.country-text {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #343341;
+}
+
+.item-name {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #343341;
+}
+
+.item-text {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #6A6A6A;
+}
+
+.item-image {
+    display: flex;
+    width: 97px;
+    height: 28px;
+    background: #5040A5;
+    border-radius: 100px;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.item-image .item-image-text {
+    color: #FFFFFF;
+    padding: 5px;
+    font-size: 10px;
+    align-items: center;
+    display: flex;
+}
+
+.people {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.rectangle {
+    position: fixed;
+    background: #0e0808;
+    height: 1563px;
+    width: 90px;
+}
+
+.searchbox {
+    width: 186px;
+    height: 20px;
+    padding: 10px;
+    background: #F6F6F6;
+    border: 1px solid #BDBDBD;
+    border-radius: 6px;
+    margin-right: 12px;
+}
+
+.header-block {
+    display: flex;
+    justify-content: space-between;
+    height: 105px;
+    align-items: center;
+    padding: 0 32px;
+}
+
+.side-bar {
+    height: 100%;
+}
+
+.side-bar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30%;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.side-bar-top {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #ED1B2E;
+}
+
+.side-bar-upper-outer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+    align-items: center;
+}
+
+.side-bar-upper-outer img {
+    width: 25px;
+    height: 25px;
+}
+
+.side-bar-bottom-outer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20%;
+}
+
+.profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.icons {
+    width: 25px;
+    height: 25px;
+}
+
+.filter-section {
+    background: #F6F6F6;
+    border: 1px solid #BDBDBD;
+    border-radius: 6px;
+    padding: 12px;
+    width: 94px;
+    height: 16px;
+    display: flex;
+}
+
+.header-right {
+    display: flex;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    width: 125px;
+    justify-content: space-between;
+}
+
+.filter-text {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #212229;
+    padding-left: 12px;
+}
+
+.display-outer {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 32px;
+}
+
+.display {
+    background: rgba(106, 106, 106, 0.1);
+    border-radius: 6px;
+    width: 128px;
+    padding: 8px;
+}
+
+.display-options {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+}
+
+.selected-filter {
+    width: 40px;
+    height: 35px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 2px rgb(97 97 97 / 20%), 0px 2px 4px rgb(97 97 97 / 20%);
+    border-radius: 6px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 45px;
+}
